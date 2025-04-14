@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,7 +7,6 @@ import {
   faCode,
   faExclamationTriangle,
   faSearch,
-  faCheckSquare
 } from "@fortawesome/free-solid-svg-icons";
 
 const vulnerabilitiesList = [
@@ -57,61 +56,74 @@ const AttaquesPage = () => {
   return (
     <div
       className="min-h-screen bg-cover bg-center bg-no-repeat text-gray-800 py-10"
-      style={{ backgroundImage: "url('/sercurite2.avif')" }}
-
+      style={{ backgroundImage: "url('/pexels-photo-3861976.webp')" }}
     >
-
       <div className="max-w-6xl mx-auto px-6">
-        <h1 className="text-3xl font-bold text-center mb-8 text-white">Vulnerability Scan Options</h1>
-        
+        <h1
+          className="text-3xl font-bold text-center mb-8 text-slate-50"
+          style={{ textShadow: "0 1px 2px rgba(0,0,0,0.6)" }}
+        >
+          Vulnerability Scan Options
+        </h1>
+
         {url && (
           <div className="text-center mb-6">
-            <h2 className="text-xl text-white">Target URL: <span className="font-semibold text-white">{url}</span></h2>
+            <h2
+              className="text-xl text-slate-100"
+              style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
+            >
+              Target URL: <span className="text-cyan-400">"&nbsp;</span>
+              <span className="font-semibold text-white">{url}</span>
+              <span className="text-cyan-400">&nbsp;"</span>
+            </h2>
+
           </div>
         )}
 
-        {/* Checkbox: ALL */}
         <div className="mb-6 flex justify-end">
           <label className="inline-flex items-center space-x-2 cursor-pointer">
             <input
               type="checkbox"
               checked={isChecked('all')}
               onChange={() => toggleVulnerability('all')}
-              className="accent-blue-700 w-5 h-5"
+              className="accent-cyan-400 w-5 h-5"
             />
-            <span className="text-sm font-medium text-white">Select All</span>
+            <span className="text-sm font-medium text-slate-100">Select All</span>
           </label>
         </div>
 
-        {/* Vulnerabilities */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
           {vulnerabilitiesList.map(({ id, label, icon, description }) => (
             <label
               key={id}
               className={`flex items-start space-x-4 p-4 border rounded-lg shadow-sm bg-white hover:shadow-md cursor-pointer transition-all ${
-                selectedVulnerabilities.includes(id) ? 'border-blue-700 ring-1 ring-blue-700' : 'border-gray-300'
+                selectedVulnerabilities.includes(id) ? 'border-cyan-400 ring-1 ring-cyan-400' : 'border-gray-300'
               }`}
             >
               <input
                 type="checkbox"
                 checked={isChecked(id)}
                 onChange={() => toggleVulnerability(id)}
-                className="accent-blue-700 mt-1"
+                className="accent-cyan-400 mt-1"
               />
               <div className="flex-1">
                 <div className="flex items-center space-x-2 mb-1">
-                  <FontAwesomeIcon icon={icon} className="text-blue-700" />
-                  <span className="font-semibold">{label}</span>
+                  <FontAwesomeIcon icon={icon} className="text-cyan-400" />
+                  <span className="font-semibold text-gray-800">{label}</span>
                 </div>
-                <p className="text-sm text-gray-600">{description}</p>
+                <p className="text-sm text-slate-600">{description}</p>
               </div>
             </label>
           ))}
         </div>
 
-        {/* Scan Intensity */}
         <div className="mb-10">
-          <h3 className="text-xl font-medium mb-4 text-white">Scan Intensity</h3>
+          <h3
+            className="text-xl font-medium mb-4 text-slate-100"
+            style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
+          >
+            Scan Intensity
+          </h3>
           <div className="space-x-4">
             {["fast", "medium", "thorough"].map(level => (
               <label key={level} className="inline-flex items-center space-x-1">
@@ -121,19 +133,18 @@ const AttaquesPage = () => {
                   value={level}
                   checked={scanIntensity === level}
                   onChange={(e) => setScanIntensity(e.target.value)}
-                  className="accent-blue-700"
+                  className="accent-cyan-400"
                 />
-                <span className="capitalize text-white">{level} scan</span>
+                <span className="capitalize text-slate-100">{level} scan</span>
               </label>
             ))}
           </div>
         </div>
 
-        {/* Scan Button */}
         <div className="text-center">
           <button
             onClick={handleScan}
-            className="bg-blue-700 hover:bg-blue-800 text-white py-3 px-6 rounded-lg shadow-md transition"
+            className="bg-cyan-400 hover:bg-cyan-400 text-white py-3 px-6 rounded-lg shadow-md transition"
           >
             Start Scan
           </button>
