@@ -62,11 +62,11 @@ const AttaquesPage = () => {
     >
 
       <div className="max-w-6xl mx-auto px-6">
-        <h1 className="text-3xl font-bold text-center mb-8">Vulnerability Scan Options</h1>
+        <h1 className="text-3xl font-bold text-center mb-8 text-white">Vulnerability Scan Options</h1>
         
         {url && (
           <div className="text-center mb-6">
-            <h2 className="text-xl">Target URL: <span className="font-semibold text-blue-700">{url}</span></h2>
+            <h2 className="text-xl text-white">Target URL: <span className="font-semibold text-white">{url}</span></h2>
           </div>
         )}
 
@@ -79,7 +79,7 @@ const AttaquesPage = () => {
               onChange={() => toggleVulnerability('all')}
               className="accent-blue-700 w-5 h-5"
             />
-            <span className="text-sm font-medium">Select All</span>
+            <span className="text-sm font-medium text-white">Select All</span>
           </label>
         </div>
 
@@ -111,10 +111,10 @@ const AttaquesPage = () => {
 
         {/* Scan Intensity */}
         <div className="mb-10">
-          <h3 className="text-xl font-medium mb-4">Scan Intensity</h3>
-          <div className="space-y-2">
+          <h3 className="text-xl font-medium mb-4 text-white">Scan Intensity</h3>
+          <div className="space-x-4">
             {["fast", "medium", "thorough"].map(level => (
-              <label key={level} className="inline-flex items-center space-x-3">
+              <label key={level} className="inline-flex items-center space-x-1">
                 <input
                   type="radio"
                   name="scanIntensity"
@@ -123,7 +123,7 @@ const AttaquesPage = () => {
                   onChange={(e) => setScanIntensity(e.target.value)}
                   className="accent-blue-700"
                 />
-                <span className="capitalize text-gray-700">{level} scan</span>
+                <span className="capitalize text-white">{level} scan</span>
               </label>
             ))}
           </div>
