@@ -1,64 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Slider from "react-slick"; // Ensure you install react-slick and slick-carousel
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import heroBg from "../assets/pexels-thatguycraig000-1727684.jpg";
+import heroBg from "../assets/securite.webp.jpg";
 import Header from "./Header";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
 const Home = () => {
   const navigate = useNavigate();
-  const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/api/v1/product/allproducts"); // Replace with your actual API endpoint
-        if (!response.ok) throw new Error("Failed to fetch products");
-        const data = await response.json();
-        setProducts(data.products || data); // Use `data.products` if the API response has a `products` array
-        setError(null); // Clear any previous errors
-      } catch (err) {
-        console.error("Error fetching products:", err);
-        setError("Unable to load products.");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, []);
-
-  const sliderSettings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 3 } },
-      { breakpoint: 768, settings: { slidesToShow: 2 } },
-      { breakpoint: 480, settings: { slidesToShow: 1 } },
-    ],
-    prevArrow: (
-      <button className="slick-prev absolute left-0 top-1/2 transform -translate-y-1/2 text-6xl text-white bg-blue-900 p-8 rounded-full shadow-xl hover:bg-blue-700 focus:outline-none transition duration-300 ease-in-out">
-        &lt;
-      </button>
-    ),
-    nextArrow: (
-      <button className="slick-next absolute right-0 top-1/2 transform -translate-y-1/2 text-6xl text-white bg-blue-900 p-8 rounded-full shadow-xl hover:bg-blue-700 focus:outline-none transition duration-300 ease-in-out">
-        &gt;
-      </button>
-    ),
-  };
 
   return (
     <div>
       <Header />
 
-      {/* Smooth Scrolling */}
       <style>{`
         html {
           scroll-behavior: smooth;
@@ -66,159 +18,103 @@ const Home = () => {
       `}</style>
 
       {/* Hero Section */}
-      <section id="home" className="relative bg-cover bg-center h-screen" style={{ backgroundImage: `url(${heroBg})` }}>
+      <section id="home" className="relative bg-cover bg-center h-screen border-[rgba(178, 208, 217, 0.5)] mb-0" style={{ backgroundImage: `url(${heroBg})` }}>
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         <div className="relative z-10 flex flex-col items-center justify-center text-center text-white h-full">
-          <h2 className="text-sm uppercase text-red-400 tracking-widest mb-4 animate__animated animate__fadeIn">Up To 60% Off Now</h2>
-          <h1 className="text-5xl font-extrabold mb-6 animate__animated animate__fadeIn animate__delay-1s">
-            Mid Season Sale <span className="text-red-400">40%</span>
+          <h2 className="text-sm uppercase text-red-400 tracking-widest mb-4 animate_animated animate_fadeIn">Free Real-Time Analysis</h2>
+          <h1 className="text-5xl font-extrabold mb-6 animate_animated animatefadeIn animate_delay-1s">
+            Scan, detect,<br /><span className="text-red-400"> protect</span> your website
           </h1>
-          <p className="text-lg mb-8 animate__animated animate__fadeIn animate__delay-2s">Final Clearance: Take 20% off Sale Must-Haves</p>
-          <button
-            className="bg-red-600 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:bg-red-500 transition duration-300 animate__animated animate__fadeIn animate__delay-3s"
-            onClick={() => {
-              navigate("/products");
-            }}
-          >
-            Start Shopping →
-          </button>
+          <p className="text-lg mb-8 animate_animated animatefadeIn animate_delay-2s">Smart Web Scanner – Detects XSS, SQL Injection, CSRF, LFI, RCE, and Much More</p>
+
+          <div className="mb-8 animate_animated animatefadeIn animate_delay-2s">
+            <input
+              type="url"
+              className="p-2 rounded text-black w-64 mb-4"
+              placeholder="Enter your website URL"
+              id="url-input"
+            />
+            <button
+              className="bg-gradient-to-r from-teal-500 via-blue-600 to-indigo-700 text-white px-4 py-2 rounded transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2 after:content-[''] after:block after:h-[2px] after:w-0 after:bg-teal-400 after:transition-all after:duration-300 after:mx-auto focus:after:w-full"
+              onClick={() => {
+                const url = document.getElementById('url-input').value;
+                if (url) {
+                  navigate("/attaques-page", { state: { url } });
+                } else {
+                  alert("Please enter a valid URL.");
+                }
+              }}
+            >
+              Start Analysis →
+            </button>
+          </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="h-screen bg-blue-100 flex items-center justify-center animate__animated animate__fadeIn animate__delay-4s">
+      <section id="about" className="h-screen bg-gradient-to-b from-[#2F3F4D] to-white flex items-center justify-center animate_animated animatefadeIn animate_delay-4s ">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-gray-800 mb-6">Who We <span className="text-blue-500">Are</span></h2>
+          <h2 className="text-4xl font-bold text-gray-800 mb-6">Our <span className="text-red-400">Mission</span></h2>
           <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
-            At R@MIS Kart, we strive to bring you the best shopping experience by providing high-quality products and unbeatable customer service. Our mission is to make your life easier with every purchase.
+          We specialize in web cybersecurity. Our automated scanning tool analyzes your application for the most common vulnerabilities:
+          <br></br>
+          <strong>XSS, SQL Injection, CSRF, RCE, LFI, IDOR</strong>, and many more.
+          <br></br><br></br>
+          With <strong>S2AL Scanner</strong>, you get a clear, prioritized report to help you fix vulnerabilities before an attacker can exploit them.
           </p>
-        </div>
-      </section>
-
-      {/* Products Section */}
-      <section id="products" className="py-24 bg-gradient-to-b from-white to-gray-100 animate__animated animate__fadeIn animate__delay-5s">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-extrabold text-gray-800 mb-12">Our Exclusive Products</h2>
-          <p className="text-lg text-gray-600 mb-10">
-            Explore a curated selection of premium products designed to elevate your experience.
-          </p>
-
-          {/* Product Slider */}
-          {loading ? (
-            <p>Loading...</p>
-          ) : error ? (
-            <p>{error}</p>
-          ) : (
-            <Slider {...sliderSettings}>
-              {products.map((product, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105">
-                  <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-lg" />
-                  <h3 className="text-xl font-semibold text-gray-700 mb-2">{product.name}</h3>
-                  <p className="text-gray-500 mb-4">{product.description}</p>
-                  <button className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-500 transition duration-300" 
-                  onClick={()=>{navigate("/products")}}
-                  >
-                    View Product
-                  </button>
-                </div>
-              ))}
-            </Slider>
-          )}
         </div>
       </section>
 
       {/* Feedback Section */}
-      <section id="feedback" className="h-screen flex items-center justify-center bg-gradient-to-b from-blue-800 to-gray-900 text-white animate__animated animate__fadeIn animate__delay-6s">
+      <section id="feedback" className="h-screen bg-gradient-to-b from-[#dcdcdc] to-[#B2D0D9] flex items-center justify-center animate_animated animatefadeIn animate_delay-4s -mt-32">
         <div className="text-center max-w-lg px-6">
-          <h2 className="text-4xl font-bold mb-6">We Value Your <span className="text-yellow-400">Feedback</span></h2>
+          <h2 className="text-4xl font-bold mb-6">Your <span className="text-red-400">Feedback</span> Matters</h2>
           <p className="text-lg leading-relaxed mb-8">
-            Your thoughts and suggestions are important to us. Let us know how we can improve your experience. Were here to listen and make things better.
+            Help us improve our scanner. Tell us what you like, what could be better, or suggest new features!
           </p>
           <button
-            className="bg-yellow-500 px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 transition"
+            className="bg-red-400 text-white px-6 py-3 rounded-full font-semibold hover:bg-red-300 transition"
             onClick={() => navigate("/feedback")}
           >
-            Share Feedback →
+            Give Feedback →
           </button>
         </div>
       </section>
 
-      {/* Footer with Smooth Animations */}
-      <footer id="contact" className="bg-gray-900 py-10 text-white pl-8 animate__animated animate__fadeIn animate__delay-7s">
+      {/* Footer */}
+      <footer id="contact" className="bg-gradient-to-b from-[#B2D0D9] to-[#003D56] flex items-center justify-center animate_animated animatefadeIn animate_delay-4s pb-12">
         <div className="max-w-screen-xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-36">
             <div>
-              <h3 className="font-semibold text-lg mb-4 ">ABOUT US</h3>
-              <ul>
-                <li>
-                  <a href="#" className="hover:text-gray-400">
-                    Our Story
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-gray-400">
-                    Affiliate Program
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-gray-400">
-                    Wholesale Program
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-gray-400">
-                    Press Inquiries
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-gray-400">
-                    Careers
-                  </a>
-                </li>
+              <h3 className="font-semibold text-lg mb-6">ABOUT</h3>
+              <ul className="space-y-3">
+                <li><a href="#" className="hover:text-gray-400">Our Vision</a></li>
+                <li><a href="#" className="hover:text-gray-400">Partners</a></li>
+                <li><a href="#" className="hover:text-gray-400">Press</a></li>
+                <li><a href="#" className="hover:text-gray-400">Careers</a></li>
               </ul>
             </div>
 
             <div>
-              <h3 className="font-semibold text-lg mb-4">CUSTOMER SUPPORT</h3>
-              <ul>
-                <li>
-                  <a href="#" className="hover:text-gray-400">
-                    Returns & Exchanges
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-gray-400">
-                    Shipping Information
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-gray-400">
-                    Track Your Order
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-gray-400">
-                    Promo Code Lookup
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-gray-400">
-                    Gift Card Lookup
-                  </a>
-                </li>
+              <h3 className="font-semibold text-lg mb-6">SUPPORT</h3>
+              <ul className="space-y-3">
+                <li><a href="#" className="hover:text-gray-400">FAQ</a></li>
+                <li><a href="#" className="hover:text-gray-400">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-gray-400">How the Scanner Works</a></li>
+                <li><a href="#" className="hover:text-gray-400">Vulnerability Reports</a></li>
               </ul>
             </div>
 
             <div>
-              <h3 className="font-semibold text-lg mb-4">CONNECT WITH US</h3>
-              <div className="flex space-x-4 mb-4">
+              <h3 className="font-semibold text-lg mb-6">CONNECT WITH US</h3>
+              <div className="flex space-x-6 mb-6">
                 <FontAwesomeIcon icon={faFacebookF} className="text-2xl" />
                 <FontAwesomeIcon icon={faTwitter} className="text-2xl" />
                 <FontAwesomeIcon icon={faInstagram} className="text-2xl" />
                 <FontAwesomeIcon icon={faLinkedinIn} className="text-2xl" />
               </div>
-              <p className="text-sm text-gray-400 mt-6">
-                &copy; 2024 R@MIS Kart. All rights reserved.
+              <p className="text-sm text-gray-400 mt-10">
+                &copy; 2024 S2AL Scanner – All rights reserved.
               </p>
             </div>
           </div>

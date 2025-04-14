@@ -6,11 +6,12 @@ const About = () => {
           About Us
         </h1>
         <p className="text-[rgb(236,223,204)] text-lg leading-relaxed">
-          Welcome to R@MIs Kart! We are dedicated to providing you with the
-          best shopping experience. Our platform offers a wide range of
-          products, from electronics to clothing, all at unbeatable prices.
-          Experience seamless shopping with quality customer support and
-          excellent deals.
+        Welcome to S2AL!
+        We are committed to providing you with the highest level of digital security. 
+        Our platform offers a range of premium digital certificates designed to protect your online assets,
+        ensuring confidentiality and trust in your communications. With S2AL, you can experience seamless
+        and secure online transactions with ease, backed by top-tier customer support. Protect your business
+        and personal data with our reliable, cost-effective certificates.
         </p>
       </div>
     </div>

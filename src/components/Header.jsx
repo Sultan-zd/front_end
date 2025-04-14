@@ -28,11 +28,20 @@ const Header = () => {
     >
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         <div className="flex items-center space-x-4">
-          <h1 className="text-2xl font-extrabold text-center text-[#d62828] uppercase drop-shadow-md ml-12">
-            R@MI&apos;S
-            <span className="text-[#000000]">KART</span>
+          <h1 className="text-5xl font-extrabold uppercase drop-shadow-md">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-indigo-700">
+              S2al
+            </span>
+            <span className="text-5xl text-red-400"> S</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-800">
+              can
+            </span>
           </h1>
         </div>
+
+
+
+
         <nav className="flex items-center space-x-6 mr-8">
           <a
             href="#home"
@@ -47,12 +56,6 @@ const Header = () => {
             About
           </a>
           <a
-            href="#products"
-            className="text-gray-700 hover:font-semibold hover:underline hover:text-gray-800"
-          >
-            Products
-          </a>
-          <a
             href="#feedback"
             className="text-gray-700 hover:font-semibold hover:underline hover:text-gray-800"
           >
@@ -65,20 +68,12 @@ const Header = () => {
             Contact
           </a>
           <button
-            className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-500"
+            className="bg-gradient-to-r from-teal-500 via-blue-600 to-indigo-700 text-white px-4 py-2 rounded transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2 after:content-[''] after:block after:h-[2px] after:w-0 after:bg-teal-400 after:transition-all after:duration-300 after:mx-auto focus:after:w-full"
             onClick={() => {
               navigate("/login");
             }}
           >
             Logout
-          </button>
-          <button
-            className="bg-gray-100 px-4 py-2 rounded shadow hover:bg-gray-200"
-            onClick={() => {
-              navigate("/addProduct");
-            }}
-          >
-            Create a Product
           </button>
         </nav>
       </div>

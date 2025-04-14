@@ -42,9 +42,12 @@ function Login() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#faf3e0]">
       <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
-        <h2 className="text-3xl font-bold text-center text-[#d53933] mb-6">
-          R@MI&apos;S<span className="text-gray-900">KART</span>
-        </h2>
+      <h2 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 via-blue-600 to-indigo-700 uppercase">
+        S2al
+        <span className="text-5xl text-red-400"> s</span>
+        <span className="text-5xl text-[#1e40af]">can</span>
+      </h2>
+
         <form className="space-y-6" onSubmit={handleLogin}>
           {/* Email Input */}
           <div>
@@ -84,7 +87,7 @@ function Login() {
           {/* Login Button */}
           <button
             type="submit"
-            className="w-full py-3 mt-4 text-white bg-[#d53933] rounded-md hover:bg-[#b80000] focus:outline-none focus:ring-2 focus:ring-[#ff4500]"
+            className="w-full py-3 mt-4 text-white bg-red-400 rounded-full font-semibold hover:bg-red-300 focus:outline-none focus:ring-2 focus:ring-[#ff4500]"
           >
             Login
           </button>

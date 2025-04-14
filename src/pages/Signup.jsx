@@ -32,7 +32,11 @@ function Signup() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#faf3e0]">
       <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
-        <h2 className="text-3xl font-bold text-center text-[#d53933] mb-6">R@MI&apos;S<span className="text-gray-900">KART</span></h2>
+      <h2 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 via-blue-600 to-indigo-700 uppercase">
+        S2al
+        <span className="text-5xl text-red-400"> s</span>
+        <span className="text-5xl text-[#1e40af]">can</span>
+      </h2>
         <form className="space-y-6" onSubmit={handleSubmit}>
           {/* Name Input */}
           <div>

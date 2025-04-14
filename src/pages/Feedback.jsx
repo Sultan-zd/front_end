@@ -85,7 +85,7 @@ const Feedback = () => {
         className="bg-white border border-gray-300 p-8 rounded-lg shadow-[0px_10px_20px_rgba(0,0,0,0.1),0px_20px_40px_rgba(0,0,0,0.1)] w-full max-w-lg space-y-6"
         onSubmit={handleSubmit}
       >
-        <h1 className="text-2xl font-extrabold text-center text-[#d62828] uppercase drop-shadow-md">
+        <h1 className="text-2xl font-extrabold text-center text-red-400 uppercase drop-shadow-md">
           Feedback <span className="text-black">Form</span>
         </h1>
 
@@ -176,7 +176,7 @@ const Feedback = () => {
 
         <button
           type="submit"
-          className="w-full py-3 px-6 bg-[#d62828] text-white font-semibold rounded-lg shadow-md transition duration-200"
+          className="w-full py-3 px-6 bg-red-400 text-white font-semibold rounded-lg shadow-md transition duration-200"
         >
           Submit Feedback
         </button>
