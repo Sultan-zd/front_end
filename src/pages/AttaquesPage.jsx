@@ -46,6 +46,13 @@ const vulnerabilitiesList = [
     icon: faUserShield,
     description: 'Testing login forms with multiple password attempts.',
   },
+  {
+    id: 'lfi',
+    label: 'Local File Inclusion',
+    icon: faExclamationTriangle,
+    description: 'Exploiting vulnerable file inclusion functionality to access sensitive files on the server.',
+  }
+  
 ];
 
 const AttaquesPage = () => {
@@ -94,6 +101,8 @@ const AttaquesPage = () => {
         else if (vuln === 'brute-force') endpoint = 'scan-brute';
         else if (vuln === 'web cache poisoning') endpoint = 'scan-poisoning';
         else if (vuln === 'web cache deception') endpoint = 'scan-deception';
+        else if (vuln === 'sql-injection') endpoint = 'scan-sqli';
+        else if (vuln === 'lfi') endpoint = 'scan-lfi';
 
         if (endpoint) {
           const response = await fetch(`http://192.168.1.11:5000/${endpoint}`, {

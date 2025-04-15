@@ -116,4 +116,49 @@ app.post('/scan-deception', (req, res) => {
 
 });
 
+app.post('/scan-sqli', (req, res) => {
+  const { url } = req.body;
+
+  if (!url) {
+    return res.status(400).json({ error: 'URL manquante' });
+  }
+
+  const command = `python3 sqli.py ${url}`;
+
+
+  exec(command, (error, stdout, stderr) => {
+   if (error) {
+    console.error(`Erreur lors de l'exécution: ${stderr}`);
+    return res.status(500).json({ error: stderr || 'Erreur lors de l\'exécution' });
+   }
+
+   console.log(`Résultat du scan SQL injection: ${stdout}`);  // Affiche le résultat du scan
+   res.json({ result: stdout });
+ });
+
+});
+
+app.post('/scan-lfi', (req, res) => {
+  const { url } = req.body;
+
+  if (!url) {
+    return res.status(400).json({ error: 'URL manquante' });
+  }
+
+  const command = `python3 lfi.py ${url}`;
+
+
+  exec(command, (error, stdout, stderr) => {
+   if (error) {
+    console.error(`Erreur lors de l'exécution: ${stderr}`);
+    return res.status(500).json({ error: stderr || 'Erreur lors de l\'exécution' });
+   }
+
+   console.log(`Résultat du scan lfi: ${stdout}`);  // Affiche le résultat du scan
+   res.json({ result: stdout });
+ });
+
+});
+
+
 app.listen(5000, '0.0.0.0', () => console.log('✅ Backend lancé sur http://0.0.0.0:5000'));
